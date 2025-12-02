@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avery Skinner Tattoo</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET */
+        * {;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+        
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            height: 100vh;
+            background: url("images/IMG_2.jpeg") center 35%/cover no-repeat;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+
+        /* NAVIGATION */
+        nav {
+            width: 100%;
+            height: 60px;
+            background: rgba(226, 227, 230);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #cfcfcf;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 22px;
+        }
+
+
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: transform 0.25s ease;
+            display: inline-block;
+            padding: 0 20px;
+        }
+
+        nav a:hover {
+            color: #395233;
+            transform: scale(1.20);
+        }
+
+        .nav-logo img {
+            height: 250px;
+            transform: translateY(40px);
+        }
+
+        /* HAMBURGER */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .hamburger div {
+            width: 28px;
+            height: 3px;
+            background: #000;
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 62px;
+            left: 0;
+            width: 100%;
+            background: rgba(226, 227, 230);
+            padding: 20px;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 999;
+        }
+
+        .mobile-menu a {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 900px) {
+            .nav-left,
+            .nav-right {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            height: 100vh;
+            margin: 0 auto;
+            padding: 50px 0;
+            background: transparent;
+            
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            margin-bottom: .1em;
+            transition: 1.5s ease;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 200;     /* thin */
+            font-size: 3rem;      /* large */
+            letter-spacing: 1px;  /* clean aesthetic */
+            text-transform: none; /* keep girly look */
+            margin-bottom: .1em;
+            margin-top: .1em;
+        }
+
+        h1:hover {
+            color: #395233;
+            transform: scale(1.3)
+        }
+
+
+        .row1 {
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 6;
+            margin: 0 0 100px 0;
+            text-align: center;
+    
+        }
+
+        .row2, .row3 {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+
+
+        .col-1 {
+            width: 100%;
+        }
+
+        .col-2 {
+            width: 100%;
+        }
+
+        @media (min-width: 800px) {
+            .col-2 {
+                width: 50%;
+            }
+        }
+
+        /* Row 3 slideshow */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+/* Show first slide by default */
+.slide:first-child {
+    display: block;
+}
+
+/* Scrollable items column */
+.scroll-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.scroll-items .item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+    </style>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector(".mobile-menu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+   
+        let slides = document.querySelectorAll('.slide');
+        let current = 0;
+
+        function nextSlide() {
+            slides[current].style.display = 'none';
+            current = (current + 1) % slides.length;
+            slides[current].style.display = 'block';
+        }
+
+        setInterval(nextSlide, 3000); // change slide every 3 seconds
+
+
+    </script>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <div class="nav-left">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Sale</a>
+        </div>
+
+        <div class="nav-logo">
+            <img src="images/IMG_4.png" alt="Logo" />
+        </div>
+
+        <div class="nav-right">
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Cart</a>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Sale</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Cart</a>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero"></div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- Row 1: Hero Text -->
+    <div class="row1">
+        <div class="col-1">
+            <h2>Welcome to</h2>
+            <h1><strong>YOUR NEW WEBSITE</strong></h1>
+            <p>Discover our exclusive collection of unique items designed just for you. <br> Shop now and find your favorites!</p>
+        </div>
+    </div>
+
+    <!-- Row 2: Single Column Text -->
+    <div class="row2">
+        <div class="col-1">
+            <h2>About Our Collection</h2>
+            <p>We handpick every product to ensure the highest quality. Our collection is curated to reflect modern trends while keeping things fun and girly. Explore our variety of items ranging from fashion accessories to lifestyle must-haves!</p>
+        </div>
+    </div>
+
+    <!-- Row 3: Two Columns -->
+    <div class="row3">
+        <!-- Column 1: Slideshow -->
+        <div class="col-2">
+            <h3>Featured Products</h3>
+            <div class="slideshow">
+                <img src="images/product1.jpg" alt="Product 1" class="slide" />
+                <img src="images/product2.jpg" alt="Product 2" class="slide" />
+                <img src="images/product3.jpg" alt="Product 3" class="slide" />
+            </div>
+        </div>
+
+        <!-- Column 2: Scrollable Items -->
+        <div class="col-2">
+            <h3>Shop Now</h3>
+            <div class="scroll-items">
+                <div class="item">
+                    <img src="images/item1.jpg" alt="Item 1" />
+                    <p>Item 1 — $19.99</p>
+                </div>
+                <div class="item">
+                    <img src="images/item2.jpg" alt="Item 2" />
+                    <p>Item 2 — $24.99</p>
+                </div>
+                <div class="item">
+                    <img src="images/item3.jpg" alt="Item 3" />
+                    <p>Item 3 — $14.99</p>
+                </div>
+                <div class="item">
+                    <img src="images/item4.jpg" alt="Item 4" />
+                    <p>Item 4 — $29.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
